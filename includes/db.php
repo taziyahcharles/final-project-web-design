@@ -1,9 +1,9 @@
 
 <?php
-$host = 'localhost';
+$host = 'mysql-125f1ed0-taziyahcharles-c5cc.g.aivencloud.com';
 $db   = 'adoption';
-$user = 'root';
-$pass = '';
+$user = 'avnadmin';
+$pass = 'AVNS_0YEDaM4bT-koB69Fqv8';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
