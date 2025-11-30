@@ -10,7 +10,18 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'includes/header.php';
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Haven</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+</body>
+</html>
 <div class="row align-items-center mb-4">
 
   <div class="col-md-8">
