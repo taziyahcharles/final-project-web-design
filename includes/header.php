@@ -26,14 +26,14 @@ $name = $_SESSION['user_name'] ?? 'Guest';
     <div class="collapse navbar-collapse" id="nav">
 
       <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" href="adopt.php">Adopt</a></li>
         <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="adopt.php">Adopt</a></li>
         <li class="nav-item"><a class="nav-link" href="events.php">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="resources.php">Resources</a></li>
-        <li class="nav-item"><a class="nav-link" href="donate.php">Donate</a></li>
-        <li class="nav-item"><a class="nav-link" href="volunteer.php">Volunteer</a></li>
+        <!-- Resources page removed -->
         <li class="nav-item"><a class="nav-link" href="testimonials.php">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link" href="donate.php">Donate</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.php">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
       </ul>
 
       <ul class="navbar-nav">

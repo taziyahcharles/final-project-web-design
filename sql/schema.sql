@@ -35,3 +35,14 @@ INSERT INTO animals (name,species,age,photo,description) VALUES
 ('Bella','Dog',3,'images/dog1.jpg','Friendly medium-size dog. Good with kids.'),
 ('Milo','Cat',2,'images/cat1.jpg','Playful indoor cat. Litter trained.'),
 ('Luna','Rabbit',1,'images/rabbit.jpg','Calm rabbit, loves carrots.');
+CREATE TABLE donations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NULL,                    -- if logged in, store their ID
+    donor_name VARCHAR(255) NULL,        -- if donating without an account
+    donor_email VARCHAR(255) NULL,
+
+    amount DECIMAL(10,2) NOT NULL,       -- donation amount
+    donation_type ENUM('one-time', 'monthly') NOT NULL,
+
+    donated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
