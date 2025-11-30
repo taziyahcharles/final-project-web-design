@@ -1,5 +1,5 @@
 <?php
-require 'includes/db.php';
+require 'config/db.php';
 
 $msg = '';
 $adopt_id = intval($_GET['adopt'] ?? 0);

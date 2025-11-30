@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'includes/db.php'; // make sure this path is correct
+include 'config/db.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

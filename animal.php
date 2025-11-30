@@ -1,5 +1,5 @@
 <?php
-require 'includes/db.php';
+require 'config/db.php';
 include 'includes/header.php';
 $id = intval($_GET['id'] ?? 0);
 $stmt = $pdo->prepare('SELECT * FROM animals WHERE id = ?');
