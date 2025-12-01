@@ -1,30 +1,24 @@
-# Use the official PHP Apache image
+# Use the official PHP image with Apache
 FROM php:8.2-apache
 
-# Enable required Apache modules
-RUN a2enmod rewrite
+# Install mysqli and PDO MySQL extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli pdo_mysql
 
-# Copy your app into the container
+# Copy application files to the web server root
 COPY . /var/www/html/
 
-# Set the working directory
+
+# Set working directory
 WORKDIR /var/www/html
 
-# Configure Apache to use Render's PORT environment variable
-# Replace the default ports.conf with one that listens on $PORT
-RUN echo "Listen ${PORT}" > /etc/apache2/ports.conf \
-    && echo "<VirtualHost *:${PORT}>\n\
-        ServerName localhost\n\
-        DocumentRoot /var/www/html\n\
-        <Directory /var/www/html>\n\
-            Options Indexes FollowSymLinks\n\
-            AllowOverride All\n\
-            Require all granted\n\
-        </Directory>\n\
-    </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
+# Expose port 80 for web traffic
+EXPOSE 80
 
-# Expose the port (Render will override this with its own PORT)
-EXPOSE 10000
+# Give Apache permission to read/write files
+RUN chown -R www-data:www-data /var/www/html
+
+# Enable Apache mod_rewrite (optional, useful for routing)
+RUN a2enmod rewrite
 
 # Start Apache in the foreground
 CMD ["apache2-foreground"]
