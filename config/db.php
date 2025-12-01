@@ -1,6 +1,6 @@
 <?php
 $host = 'mysql-125f1ed0-taziyahcharles-c5cc.g.aivencloud.com';
-$port = 12345;
+$port = 26943;
 $db   = 'adoption';
 $user = 'avnadmin';
 $pass = 'AVNS_0YEDaM4bT-koB69Fqv8';
