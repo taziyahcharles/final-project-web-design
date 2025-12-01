@@ -1,1 +1,0 @@
-Put real images named dog1.jpg, cat1.jpg, rabbit.jpg in the images/ folder. Placeholder images can be used.
