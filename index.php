@@ -1,6 +1,8 @@
 <?php
-session_start();
-require 'config/db.php';
+// Start session
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
@@ -10,17 +12,6 @@ if (!isset($_SESSION['user_id'])) {
 
 include 'includes/header.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Haven</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
 
 <div class="container mt-5">
 
@@ -54,7 +45,11 @@ include 'includes/header.php';
 
                 <p>Need to update anything? View your profile or explore the adoption listings.</p>
 
-                <a href="logout.php" class="btn btn-outline-danger w-100">Logout</a>
+                <div class="d-grid gap-2">
+                    <a href="adopt.php" class="btn btn-outline-primary">View Pets</a>
+                    <a href="donate.php" class="btn btn-outline-success">Make a Donation</a>
+                    <a href="logout.php" class="btn btn-outline-danger">Logout</a>
+                </div>
             </div>
         </div>
     </div>
@@ -64,9 +59,38 @@ include 'includes/header.php';
         animal a brighter future.
     </div>
 
+    <div class="row mt-5">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">🐕 Adopt a Pet</h5>
+                    <p class="card-text">Find your perfect companion from our loving animals waiting for homes.</p>
+                    <a href="adopt.php" class="btn btn-primary">Browse Animals</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">💰 Make a Donation</h5>
+                    <p class="card-text">Support our mission to care for homeless animals.</p>
+                    <a href="donate.php" class="btn btn-success">Donate Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📅 Upcoming Events</h5>
+                    <p class="card-text">Join our community events and meet other pet lovers.</p>
+                    <a href="events.php" class="btn btn-info text-white">View Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <?php include 'includes/footer.php'; ?>
-
-</body>
-</html>
