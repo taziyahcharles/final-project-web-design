@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require 'config/db.php';
 
 $msg = '';
@@ -15,11 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($u && password_verify($pass, $u['password'])) {
         $_SESSION['user_id'] = $u['id'];
         $_SESSION['user_name'] = $u['name'];
-        $_SESSION['user_role'] = $u['role'];
+        $_SESSION['user_role'] = $u['role'] ?? 'user';
         header("Location: index.php");
         exit;
     } else {
-        $msg = "Invalid credentials";
+        $msg = "Invalid email or password";
     }
 }
 ?>
@@ -39,16 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="row justify-content-center">
     <div class="col-md-5 p-4 bg-white shadow rounded">
 
-      <h3 class="mb-3 text-center">Login</h3>
+      <h3 class="mb-3 text-center">Login to Pet Haven</h3>
 
       <?php if($msg): ?>
-        <div class="alert alert-danger text-center"><?=$msg?></div>
+        <div class="alert alert-danger text-center"><?=htmlspecialchars($msg)?></div>
       <?php endif; ?>
 
       <form method="post">
         <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input name="email" type="email" class="form-control" required>
+          <label class="form-label">Email Address</label>
+          <input name="email" type="email" class="form-control" required autofocus>
         </div>
 
         <div class="mb-3">
@@ -60,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </form>
 
       <div class="text-center mt-3">
-        <a href="register.php">Don't have an account? Register</a>
+        <a href="register.php">Don't have an account? Register here</a>
       </div>
 
     </div>

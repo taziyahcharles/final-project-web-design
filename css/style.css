@@ -6,6 +6,13 @@ body {
     background: linear-gradient(180deg, #f8fafc, #eef2f7);
     font-family: "Segoe UI", Arial, sans-serif;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
 }
 
 h1, h2, h3, h4, h5 {
@@ -20,6 +27,7 @@ p {
 /* Center main containers */
 .container {
     margin-top: 20px;
+    max-width: 1200px;
 }
 
 /* ================================
@@ -34,6 +42,7 @@ p {
 .navbar-brand {
     font-weight: bold;
     color: #2b5876 !important;
+    font-size: 1.5rem;
 }
 
 .nav-link {
@@ -44,8 +53,13 @@ p {
     color: #1e88e5 !important;
 }
 
+.nav-link.active {
+    color: #1e88e5 !important;
+    font-weight: 600;
+}
+
 /* ================================
-   CARDS (pets, testimonials, events)
+   CARDS
 =================================== */
 
 .card {
@@ -53,6 +67,7 @@ p {
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
 }
 
 .card:hover {
@@ -71,6 +86,7 @@ img.img-fluid {
     max-height: 350px;
     object-fit: cover;
     border-radius: 14px;
+    width: 100%;
 }
 
 /* ================================
@@ -82,6 +98,7 @@ img.img-fluid {
     border-radius: 8px;
     padding: 10px 16px;
     font-weight: 600;
+    border: none;
 }
 
 .btn-outline-secondary,
@@ -93,22 +110,35 @@ img.img-fluid {
 .btn-primary:hover,
 .btn-success:hover {
     opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: #2b5876;
+}
+
+.btn-success {
+    background-color: #28a745;
 }
 
 /* ================================
-   FORMS (login, register, donate)
+   FORMS
 =================================== */
 
 form label {
     font-weight: 600;
+    margin-bottom: 5px;
 }
 
 input, textarea, select {
     border-radius: 8px !important;
+    border: 1px solid #ddd;
+    padding: 10px !important;
 }
 
-.card form button {
-    margin-top: 10px;
+.form-control:focus {
+    border-color: #2b5876;
+    box-shadow: 0 0 0 0.2rem rgba(43, 88, 118, 0.25);
 }
 
 /* ================================
@@ -118,6 +148,22 @@ input, textarea, select {
 .alert {
     border-radius: 10px;
     font-weight: 500;
+    border: none;
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    color: #0c5460;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
 /* ================================
@@ -130,6 +176,7 @@ footer {
     margin-top: 40px;
     color: #fff;
     text-align: center;
+    width: 100%;
 }
 
 footer p {
@@ -150,6 +197,11 @@ footer p {
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: #e3f2fd;
+    color: #2b5876;
+}
+
 /* ================================
    TESTIMONIALS
 =================================== */
@@ -160,6 +212,7 @@ footer p {
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     margin-bottom: 20px;
+    height: 100%;
 }
 
 .testimonial h5 {
@@ -185,4 +238,23 @@ footer p {
     padding: 15px;
     border-radius: 8px;
     font-weight: 500;
+}
+
+/* Event cards */
+.event-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 6px solid #ffb347;
+    transition: transform 0.2s;
+}
+
+.event-card:hover {
+    transform: translateX(5px);
+}
+
+/* Row spacing */
+.row {
+    margin-bottom: 20px;
 }
