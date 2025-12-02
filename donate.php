@@ -76,36 +76,6 @@ include 'includes/header.php';
                 </div>
             </div>
 
-            <div class="text-center mt-4">
-                <h5>Other Ways to Help</h5>
-                <div class="row mt-3">
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <h6>🧺 Supplies</h6>
-                                <p>Donate food, toys, blankets, and other supplies</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <h6>⏰ Volunteer</h6>
-                                <p>Give your time to help care for animals</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body text-center">
-                                <h6>🏠 Foster</h6>
-                                <p>Temporarily care for an animal in your home</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

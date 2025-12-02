@@ -1,4 +1,9 @@
 <?php
+// Start session
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require 'config/db.php';
 
 $msg = '';
@@ -29,12 +34,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msg_type = 'danger';
         } else {
             $hash = password_hash($pass, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, "user")');
+            // Removed 'role' from the INSERT statement
+            $stmt = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (?, ?, ?)');
             
             try {
                 $stmt->execute([$name, $email, $hash]);
                 $msg = 'Registration successful! You can now log in.';
                 $msg_type = 'success';
+                
+                // Auto-login after registration (optional)
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                $_SESSION['user_name'] = $name;
+                $_SESSION['user_role'] = 'user'; // Default role
+                
+                // Redirect to home page
+                header("Location: index.php");
+                exit;
+                
             } catch (PDOException $e) {
                 $msg = 'Error: ' . $e->getMessage();
                 $msg_type = 'danger';
@@ -61,32 +77,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <h3 class="mb-3 text-center">Create an Account</h3>
 
-      <?php if($msg): ?>
+      <?php if($msg && !isset($_SESSION['user_id'])): ?>
         <div class="alert alert-<?= $msg_type ?> text-center"><?= htmlspecialchars($msg) ?></div>
       <?php endif; ?>
 
-      <form method="post" novalidate>
-        <div class="mb-3">
-          <label class="form-label">Full Name</label>
-          <input name="name" class="form-control" placeholder="Enter your name" required>
+      <?php if(isset($_SESSION['user_id'])): ?>
+        <div class="alert alert-success text-center">
+          Registration successful! Redirecting to home page...
         </div>
+        <script>
+          setTimeout(function() {
+            window.location.href = 'index.php';
+          }, 2000);
+        </script>
+      <?php else: ?>
+        <form method="post" novalidate>
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input name="name" class="form-control" placeholder="Enter your name" 
+                   value="<?= htmlspecialchars($_POST['name'] ?? '') ?>" required>
+          </div>
 
-        <div class="mb-3">
-          <label class="form-label">Email Address</label>
-          <input name="email" type="email" class="form-control" placeholder="Enter your email" required>
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input name="email" type="email" class="form-control" placeholder="Enter your email" 
+                   value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" placeholder="At least 6 characters" required>
+            <small class="text-muted">Minimum 6 characters</small>
+          </div>
+
+          <button class="btn btn-success w-100">Create Account</button>
+        </form>
+
+        <div class="text-center mt-3">
+          <a href="login.php">Already have an account? Login here</a>
         </div>
-
-        <div class="mb-3">
-          <label class="form-label">Password</label>
-          <input name="password" type="password" class="form-control" placeholder="At least 6 characters" required>
-        </div>
-
-        <button class="btn btn-success w-100">Create Account</button>
-      </form>
-
-      <div class="text-center mt-3">
-        <a href="login.php">Already have an account? Login here</a>
-      </div>
+      <?php endif; ?>
 
     </div>
   </div>
