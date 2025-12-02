@@ -18,9 +18,9 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Contact Info</h5>
-                    <p class="small mb-1">123 Pet Street</p>
-                    <p class="small mb-1">Animal City, AC 12345</p>
-                    <p class="small mb-1">(555) 123-4567</p>
+                    <p class="small mb-1">Lothers Lane</p>
+                    <p class="small mb-1">St. George's, Grenada</p>
+                    <p class="small mb-1">(473) 414-7845</p>
                     <p class="small">info@pethaven.org</p>
                 </div>
             </div>

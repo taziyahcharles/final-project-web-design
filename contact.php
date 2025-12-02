@@ -80,11 +80,16 @@ include 'includes/header.php';
                         <label class="form-label">Regarding Animal (Optional)</label>
                         <select name="animal_id" class="form-select">
                             <option value="0">General Inquiry</option>
+                            <option value="volunteer">Volunteer Inquiry</option>
+                            <option value="donation">Donation Inquiry</option>
+                            <option value="event">Event Information</option>
+                            <option value="support">Website Support</option>
+                            <option value="other">Other Inquiry</option>
                             <?php foreach ($animals as $animal): ?>
                                 <option value="<?= $animal['id'] ?>" 
-                                    <?= ($adopt_id == $animal['id'] || ($_POST['animal_id'] ?? 0) == $animal['id']) ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($animal['name']) ?>
-                                </option>
+                                <?= ($adopt_id == $animal['id'] || ($_POST['animal_id'] ?? 0) == $animal['id']) ? 'selected' : '' ?>>
+                                Adoption: <?= htmlspecialchars($animal['name']) ?>
+                            </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -107,8 +112,8 @@ include 'includes/header.php';
                 <h5 class="card-title">Contact Information</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">📧 Email: info@pethaven.org</li>
-                    <li class="mb-2">📞 Phone: (555) 123-4567</li>
-                    <li class="mb-2">🏢 Address: 123 Pet Street, Animal City</li>
+                    <li class="mb-2">📞 Phone: (473) 414-7845</li>
+                    <li class="mb-2">🏢 Address: Lothers Lane, St. George's, Grenada</li>
                     <li>⏰ Hours: Mon-Fri 9am-6pm, Sat 10am-4pm</li>
                 </ul>
                 
